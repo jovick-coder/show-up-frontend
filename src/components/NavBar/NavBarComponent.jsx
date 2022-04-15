@@ -36,18 +36,16 @@ export const LogoComponent = () => {
   return <div className="LogoComponent">Logo</div>;
 };
 
-export const NavProfilePicture = ({
-  navMenuComponent,
-  setNavMenuComponent,
-}) => {
+export const NavProfilePicture = () => {
   return (
-    // <div className="NavProfilePicture">
-    <img
-      src={profilePicture}
-      className="NavProfilePicture"
-      alt="NavProfilePicture"
-    />
-    // </div>
+    <div className="ms-auto">
+      <b>UserName</b>
+      <img
+        src={profilePicture}
+        className="NavProfilePicture ms-2"
+        alt="NavProfilePicture"
+      />
+    </div>
   );
 };
 
