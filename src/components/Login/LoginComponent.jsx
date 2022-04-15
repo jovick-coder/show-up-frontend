@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function LoginComponent() {
+function LoginComponent({ setIsLoggedIn }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,9 +19,11 @@ function LoginComponent() {
       return;
     }
     inputElement[1].style.border = "solid  1px  #ced4da";
+
+    setIsLoggedIn(true);
   }
   return (
-    <div>
+    <div className="LoginComponent">
       <form className=" p-2" onSubmit={(e) => handelSubmit(e)}>
         <h3 className="text-center">Login</h3>
         <input
