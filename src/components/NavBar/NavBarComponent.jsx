@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./NavBarComponent.css";
 import profilePicture from "../../assets/images/profilePicture.jpg";
+import { BsCaretDownFill } from "react-icons/bs";
 
 function NavBarComponent({ isLoggedIn, setIsLoggedIn }) {
   function handelLogin() {
     // confirm("Logout?") navigate("/");
-    window.confirm("login?") && setIsLoggedIn(true);
+    // window.confirm("login?") && setIsLoggedIn(true);
+    window.document.querySelector(".LoginComponent").style.border = "solid red";
   }
   return (
     <div className="NavBarComponent">
@@ -44,11 +46,6 @@ export const NavProfilePicture = ({
       src={profilePicture}
       className="NavProfilePicture"
       alt="NavProfilePicture"
-      onClick={() => {
-        navMenuComponent
-          ? setNavMenuComponent(false)
-          : setNavMenuComponent(true);
-      }}
     />
     // </div>
   );
@@ -62,11 +59,19 @@ export const NavMenuComponent = ({ setIsLoggedIn }) => {
   const [navMenuComponent, setNavMenuComponent] = useState(false);
 
   return (
-    <div className="NavMenuComponent">
+    <div
+      className="NavMenuComponent"
+      onClick={() => {
+        navMenuComponent
+          ? setNavMenuComponent(false)
+          : setNavMenuComponent(true);
+      }}
+    >
       <NavProfilePicture
         navMenuComponent={navMenuComponent}
         setNavMenuComponent={setNavMenuComponent}
-      />
+      />{" "}
+      <BsCaretDownFill className="my-auto" />
       <ul
         className="dropdown-menu-ul"
         style={
