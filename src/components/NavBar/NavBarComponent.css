@@ -33,7 +33,7 @@
 .NavMenuComponent {
   position: relative;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   /* border: solid; */
   width: 300px;
 }
@@ -70,6 +70,6 @@
   width: 50px;
   color: #ddd;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  margin: auto 10px;
+  margin: auto 3px;
   margin-left: auto;
 }
