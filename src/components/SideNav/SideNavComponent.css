@@ -1,0 +1,33 @@
+/* .SideNavComponent {
+  border: solid;
+} */
+.SideNavComponent ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.SideNavComponent ul li {
+  /* border: solid; */
+  margin: 0;
+  padding: 10px;
+}
+.SideNavComponent .SideNavComponentIcon {
+  /* border: solid; */
+}
+.SideNavComponent ul li:hover {
+  background-color: rgba(221, 221, 221, 0.5);
+  /* font-size: 18px; */
+  font-weight: bolder;
+  transition: all ease-out 0.5s;
+}
+
+.SideNavComponent ul li:hover .SideNavComponentIcon {
+  color: rgb(57, 111, 182);
+  background-color: rgba(255, 255, 255, 0.734);
+  padding: 2px;
+  width: 20px;
+  /* border: solid red 1px; */
+  height: 20px;
+  font-size: 20px;
+  border-radius: 5px;
+}
