@@ -13,7 +13,11 @@ function App() {
         <div className="row mt-3">
           <div className="col-md-3">
             <div className="card">
-              {isLoggedIn ? <SideNavComponent /> : <LoginComponent />}
+              {isLoggedIn ? (
+                <SideNavComponent />
+              ) : (
+                <LoginComponent setIsLoggedIn={setIsLoggedIn} />
+              )}
             </div>
           </div>
           <div className="col-md-6">
