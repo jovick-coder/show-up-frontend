@@ -1,0 +1,9 @@
+.ScrollPageComponent {
+  height: 490px;
+  overflow-y: scroll;
+  margin-top: 0;
+}
+
+.ScrollPageComponent::-webkit-scrollbar {
+  display: none;
+}
