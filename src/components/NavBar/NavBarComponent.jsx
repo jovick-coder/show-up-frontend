@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./NavBarComponent.css";
 import profilePicture from "../../assets/images/profilePicture.jpg";
 import { BsCaretDownFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavBarComponent({ isLoggedIn, setIsLoggedIn }) {
   function handelLogin() {
@@ -17,6 +18,12 @@ function NavBarComponent({ isLoggedIn, setIsLoggedIn }) {
           <NavMenuComponent setIsLoggedIn={setIsLoggedIn} />
         ) : (
           <div className="d-flex">
+            <Link className="my-auto mx-3" to="/">
+              Home
+            </Link>
+            <Link className="my-auto mx-3" to="explore">
+              Explore
+            </Link>
             <button
               className="btn btn-primary btn-sm my-auto mx-3"
               onClick={() => handelLogin()}
@@ -55,7 +62,11 @@ export const NavLinkComponent = ({ linkText, to }) => {
 
 export const NavMenuComponent = ({ setIsLoggedIn }) => {
   const [navMenuComponent, setNavMenuComponent] = useState(false);
-
+  const navigate = useNavigate();
+  function logout() {
+    window.confirm("logout?") && setIsLoggedIn(false);
+    navigate("/");
+  }
   return (
     <div
       className="NavMenuComponent"
@@ -80,13 +91,20 @@ export const NavMenuComponent = ({ setIsLoggedIn }) => {
         <li>Profile</li>
         <li>Favorite</li>
         <hr />
-        <li
-          onClick={() => window.confirm("logout?") && setIsLoggedIn(false)}
-          className="logout"
-        >
+        <li onClick={() => logout()} className="logout">
           Logout
         </li>
       </ul>
     </div>
+  );
+};
+
+export const ProfilePicture = () => {
+  return (
+    <img
+      src={profilePicture}
+      className="NavProfilePicture ms-2"
+      alt="NavProfilePicture"
+    />
   );
 };
