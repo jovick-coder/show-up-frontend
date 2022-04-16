@@ -2,6 +2,10 @@
 .NavBarComponent {
   border: solid;
   width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  z-index: 2000;
 }
 
 /* ###### LogoComponent ####### */
@@ -61,7 +65,8 @@
 
 /* ###### NavProfilePicture ###### */
 
-.NavProfilePicture {
+.NavProfilePicture,
+.ProfilePicture {
   border: solid 2px;
   display: inline-flex;
   padding: 0px;
