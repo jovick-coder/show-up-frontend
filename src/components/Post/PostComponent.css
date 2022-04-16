@@ -1,0 +1,64 @@
+.PostComponent {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.PostComponent .header {
+  padding: 10px 0;
+}
+.PostComponent hr {
+  margin: 0;
+}
+/* .PostComponent .header { */
+/* border-bottom: solid;
+} */
+#postReadMore {
+  display: none;
+}
+.postText {
+  /* border: solid; */
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 5px;
+  cursor: pointer;
+}
+.postText::after {
+  content: "Read More...";
+  color: blue;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.568);
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+#postReadMore:checked ~ .postText {
+  height: auto;
+}
+#postReadMore:checked ~ .postText::after {
+  content: "... Read Less";
+  bottom: 0;
+  top: auto;
+  right: 5px;
+}
+
+/* ###### PostFooterComponent ###### */
+.PostFooterComponent {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+.PostFooterComponent li {
+  /* border: solid; */
+  margin: 10px 0;
+  width: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.PostFooterComponentIcon {
+  font-size: 25px;
+  cursor: pointer;
+}
