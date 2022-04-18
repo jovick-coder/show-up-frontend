@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { BsFacebook, BsGoogle, BsTwitter } from "react-icons/bs";
+import "./LoginComponent.css";
 
-function LoginComponent({ setIsLoggedIn }) {
+function LoginComponent({ setIsLoggedIn, setIsError }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,11 +13,16 @@ function LoginComponent({ setIsLoggedIn }) {
     // console.dir(inputElement);
     if (userName === "") {
       inputElement[0].style.border = "solid red 1px";
+      setIsError({
+        error: true,
+        message: "UserName is empty",
+      });
       return;
     }
     inputElement[0].style.border = "solid  1px  #ced4da";
     if (password === "") {
       inputElement[1].style.border = "solid red 1px";
+      setIsError({ error: true, message: "Password is empty" });
       return;
     }
     inputElement[1].style.border = "solid  1px  #ced4da";
@@ -43,11 +50,29 @@ function LoginComponent({ setIsLoggedIn }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className="btn btn-outline-success my-3" type="submit">
-          Search
+          Login
         </button>
+
+        <LoginComponentIcon />
       </form>
     </div>
   );
 }
 
 export default LoginComponent;
+
+export function LoginComponentIcon() {
+  return (
+    <ul className="LoginComponentIcon">
+      <li className="g">
+        <BsGoogle />
+      </li>
+      <li className="f">
+        <BsFacebook />
+      </li>
+      <li className="t">
+        <BsTwitter />
+      </li>
+    </ul>
+  );
+}
