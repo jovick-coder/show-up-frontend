@@ -1,0 +1,14 @@
+.NotFound {
+  display: inline-flex;
+  flex-direction: column;
+}
+.NotFound .NotFoundIcon {
+  font-size: 15rem;
+  margin: 20px auto;
+  color: rgb(206, 47, 47);
+}
+.NotFound .NotFoundText {
+  font-size: 3rem;
+  margin: auto;
+  color: rgb(206, 47, 47);
+}
