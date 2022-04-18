@@ -40,12 +40,12 @@ function NavBarComponent({ isLoggedIn, setIsLoggedIn }) {
 export default NavBarComponent;
 
 export const LogoComponent = () => {
-  return <div className="LogoComponent">Logo</div>;
+  return <div className="LogoComponent">SwUp</div>;
 };
 
 export const NavProfilePicture = () => {
   return (
-    <div className="ms-auto">
+    <div className="ms-auto my-auto">
       <b>UserName</b>
       <img
         src={profilePicture}
@@ -103,8 +103,8 @@ export const ProfilePicture = () => {
   return (
     <img
       src={profilePicture}
-      className="NavProfilePicture ms-2"
-      alt="NavProfilePicture"
+      className="ProfilePicture ms-2"
+      alt="ProfilePicture"
     />
   );
 };
