@@ -10,9 +10,11 @@
 .PostComponent hr {
   margin: 0;
 }
-/* .PostComponent .header { */
-/* border-bottom: solid;
-} */
+.PostComponent .postDate {
+  font-size: 12px;
+  margin-left: 5px;
+  font-style: italic;
+}
 #postReadMore {
   display: none;
 }
@@ -32,14 +34,33 @@
   top: 0;
   right: 5px;
 }
-#postReadMore:checked ~ .postText {
-  height: auto;
-}
-#postReadMore:checked ~ .postText::after {
+
+.postTextReadMore::after {
   content: "... Read Less";
   bottom: 0;
   top: auto;
   right: 5px;
+}
+
+.postMenuDiv {
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+}
+.postMenu {
+  display: none;
+  width: 130px;
+  position: absolute;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  top: 28px;
+  right: 0px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
 }
 
 /* ###### PostFooterComponent ###### */

@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProfilePicture } from "../NavBar/NavBarComponent";
 import "./PostComponent.css";
 import img from "../../assets/images/profilePicture.jpg";
-import { RiLightbulbFill, RiLightbulbFlashFill } from "react-icons/ri";
 import { FaComment } from "react-icons/fa";
+
+import { RiLightbulbFlashFill } from "react-icons/ri";
 import {
+  BsEyeSlashFill,
   BsFillLightbulbOffFill,
+  BsFillXCircleFill,
+  BsSave2Fill,
   BsStarFill,
   BsThreeDotsVertical,
+  BsX,
+  BsXLg,
 } from "react-icons/bs";
 
-function PostComponent() {
+function PostComponent({ isLoggedIn, setIsError }) {
+  const [readMore, setReadMore] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [postLike, setPostLike] = useState(false);
+  const [postStar, setPostStar] = useState(false);
+
   return (
     <div className="PostComponent">
       <div className="d-flex header justify-content-between">
@@ -18,42 +29,116 @@ function PostComponent() {
           {" "}
           <ProfilePicture />
           <div className="d-flex my-auto flex-column">
-            <b>UserName</b>Date
+            <b>UserName</b>
+            <span className="postDate">12-04-2022</span>
           </div>
         </div>
-        <BsThreeDotsVertical className="fs-4 my-auto" />
+        <div
+          className=" my-auto me-3 postMenuDiv"
+          onClick={() => setMenuIsOpen(!menuIsOpen)}
+        >
+          {menuIsOpen ? (
+            <BsXLg />
+          ) : (
+            <BsThreeDotsVertical className="fs-4 my-auto ms-auto" />
+          )}
+          <ul
+            className="postMenu"
+            style={menuIsOpen ? { display: "block" } : null}
+          >
+            {/* <li>
+              <BsX />
+              Delete post
+            </li> */}
+            <li>
+              <BsSave2Fill /> Save post
+            </li>
+            <li>
+              <BsFillXCircleFill /> Report Post
+            </li>
+            {/* <li>postMenu4</li> */}
+          </ul>
+        </div>
       </div>
       <hr />
       <img src={img} alt="" className="img-fluid" />
-      <input type="checkbox" name="" id="postReadMore" />
-      <label htmlFor="postReadMore" className="postText">
+      <label
+        htmlFor="postReadMore"
+        className={`postText ${readMore ? "postTextReadMore" : null} `}
+        style={readMore ? { height: "auto" } : null}
+        onClick={() => setReadMore(!readMore)}
+      >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eum culpa
         minus vero fugit qui, inventore molestiae dolor earum, asperiores,
         necessitatibus aut debitis porro nobis sequi officia velit ipsam
         nostrum!
       </label>
       <hr />
-      <PostFooterComponent />
+      <PostFooterComponent
+        setPostLike={setPostLike}
+        postLike={postLike}
+        postStar={postStar}
+        setPostStar={setPostStar}
+        isLoggedIn={isLoggedIn}
+        setIsError={setIsError}
+      />
     </div>
   );
 }
 
 export default PostComponent;
 
-export function PostFooterComponent() {
+export function PostFooterComponent({
+  postLike,
+  setPostLike,
+  postStar,
+  setPostStar,
+  isLoggedIn,
+  setIsError,
+}) {
   return (
     <ul className="PostFooterComponent">
       {/* <li>
-        <RiLightbulbFlashFill className="PostFooterComponentIcon" title="Insightful" />
+        
       </li> */}
-      <li title="Not insightful">
-        <BsFillLightbulbOffFill className="PostFooterComponentIcon" />
+      <li
+        title="Not insightful"
+        onClick={() =>
+          isLoggedIn
+            ? setPostLike(!postLike)
+            : setIsError({
+                error: true,
+                message: "Login before you can Like a post",
+              })
+        }
+      >
+        {postLike ? (
+          <RiLightbulbFlashFill
+            className="PostFooterComponentIcon"
+            title="Insightful"
+          />
+        ) : (
+          <BsFillLightbulbOffFill className="PostFooterComponentIcon" />
+        )}
       </li>
       <li title="Comment">
         <FaComment className="PostFooterComponentIcon" />
       </li>
-      <li title="Star Post">
-        <BsStarFill className="PostFooterComponentIcon" />
+      <li
+        title="Star Post"
+        onClick={() =>
+          isLoggedIn
+            ? setPostStar(!postStar)
+            : setIsError({
+                error: true,
+                message: "Login before you can star a post",
+              })
+        }
+      >
+        <BsStarFill
+          className="PostFooterComponentIcon"
+          style={postStar ? { color: "rgb(206, 206, 0)" } : null}
+        />
       </li>
     </ul>
   );
