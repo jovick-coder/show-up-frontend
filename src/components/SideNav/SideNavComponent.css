@@ -1,8 +1,9 @@
 .SideNavComponent {
   border: solid 1px rgba(221, 221, 221, 0.5);
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 20px 10px;
+  /* border: solid red; */
 }
 .SideNavComponent ul {
   list-style: none;
@@ -34,4 +35,9 @@
   height: 20px;
   font-size: 20px;
   border-radius: 5px;
+}
+@media screen and (max-width: 767px) {
+  .SideNavComponent {
+    border: solid red;
+  }
 }
